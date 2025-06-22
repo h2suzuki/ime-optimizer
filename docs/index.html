@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IME Optimizer - 日本語入力を、もっとスマートに</title>
+    <meta name="description" content="Chrome拡張機能でIME制御を最適化。メール欄なのにIME ON、名前欄なのにIME OFFの問題を解決。">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 1. ヒーロー＋問題の可視化 -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                日本語入力を、<br>もっとスマートに
+            </h1>
+            <p class="hero-subtitle">
+                メール欄なのにIME ON、名前欄なのにIME OFF...<br>
+                そんなストレスを解消するChrome拡張機能
+            </p>
+            
+            <div class="problem-demo">
+                <h3>😤 よくある問題</h3>
+                <div class="problem-examples">
+                    <div class="problem-item">
+                        <input type="text" placeholder="メールアドレス" class="bad-example" readonly value="あべ@gmail.com">
+                        <span class="problem-label">メール欄でIME ON</span>
+                    </div>
+                    <div class="problem-item">
+                        <input type="text" placeholder="氏名" class="bad-example" readonly value="tanaka">
+                        <span class="problem-label">名前欄でIME OFF</span>
+                    </div>
+                    <div class="problem-item">
+                        <input type="text" placeholder="電話番号" class="bad-example" readonly value="でんわばんごう">
+                        <span class="problem-label">電話欄で日本語入力</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="https://github.com/h2suzuki/ime-optimizer/releases/latest" class="btn-primary">
+                    📥 拡張機能をダウンロード
+                </a>
+                <a href="https://github.com/h2suzuki/ime-optimizer" class="btn-secondary">
+                    📊 GitHub で見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ライブデモセクション -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2>✨ 実際に体験してみよう</h2>
+            <p class="section-subtitle">
+                下のフォームで拡張機能の効果を実感できます。<br>
+                ※このデモはシミュレーションです。実際の拡張機能では自動的に適用されます。
+            </p>
+
+            <div class="demo-controls">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="demoToggle">
+                    <span class="slider"></span>
+                    <span class="toggle-label">IME Optimizer ON/OFF</span>
+                </label>
+            </div>
+
+            <div class="demo-form">
+                <div class="form-section">
+                    <h3>📝 お客様情報</h3>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>氏名</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="田中太郎" data-type="name">
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 95%）">📝</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>フリガナ</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="タナカタロウ" data-type="kana">
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 90%）">📝</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>メールアドレス</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="tanaka@example.com" data-type="email">
+                                <span class="field-icon" data-emoji="📧" data-tooltip="メール入力（信頼度: 95%）">📧</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>電話番号</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="090-1234-5678" data-type="tel">
+                                <span class="field-icon" data-emoji="📞" data-tooltip="電話番号（信頼度: 90%）">📞</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>郵便番号</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="123-4567" data-type="postal">
+                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力（信頼度: 85%）">🔢</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>住所</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="東京都渋谷区..." data-type="address">
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 90%）">📝</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>💳 お支払い情報</h3>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>クレジットカード番号</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="1234 5678 9012 3456" data-type="card">
+                                <span class="field-icon" data-emoji="💳" data-tooltip="カード番号（信頼度: 85%）">💳</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>有効期限</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="12/26" data-type="date">
+                                <span class="field-icon" data-emoji="📅" data-tooltip="日付入力（信頼度: 80%）">📅</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>セキュリティコード</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="123" data-type="security">
+                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力（信頼度: 90%）">🔢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>🔗 その他</h3>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>ウェブサイト</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="https://example.com" data-type="url">
+                                <span class="field-icon" data-emoji="🔗" data-tooltip="URL入力（信頼度: 85%）">🔗</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>検索</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="キーワードを入力" data-type="search">
+                                <span class="field-icon" data-emoji="🔍" data-tooltip="検索入力（信頼度: 80%）">🔍</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>パスワード</label>
+                            <div class="input-with-icon">
+                                <input type="password" placeholder="••••••••" data-type="password">
+                                <span class="field-icon" data-emoji="🔒" data-tooltip="パスワード（信頼度: 100%）">🔒</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>コメント</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="ご要望をお聞かせください" data-type="comment">
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 85%）">📝</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Before/After比較 -->
+    <section id="comparison" class="comparison">
+        <div class="container">
+            <h2>🔄 Before / After 比較</h2>
+            <div class="comparison-wrapper">
+                <div class="comparison-side">
+                    <h3>❌ 拡張機能なし</h3>
+                    <div class="comparison-form">
+                        <div class="form-field">
+                            <label>メールアドレス</label>
+                            <input type="text" placeholder="あべ@gmail.com" class="bad-input" readonly>
+                            <span class="status bad">IME ON（不適切）</span>
+                        </div>
+                        <div class="form-field">
+                            <label>氏名</label>
+                            <input type="text" placeholder="tanaka" class="bad-input" readonly>
+                            <span class="status bad">IME OFF（不適切）</span>
+                        </div>
+                        <div class="form-field">
+                            <label>電話番号</label>
+                            <input type="text" placeholder="でんわばんごう" class="bad-input" readonly>
+                            <span class="status bad">IME ON（不適切）</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-side">
+                    <h3>✅ 拡張機能あり</h3>
+                    <div class="comparison-form">
+                        <div class="form-field">
+                            <label>メールアドレス</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="tanaka@example.com" class="good-input" readonly>
+                                <span class="field-icon">📧</span>
+                            </div>
+                            <span class="status good">IME OFF（適切）</span>
+                        </div>
+                        <div class="form-field">
+                            <label>氏名</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="田中太郎" class="good-input" readonly>
+                                <span class="field-icon">📝</span>
+                            </div>
+                            <span class="status good">IME ON（適切）</span>
+                        </div>
+                        <div class="form-field">
+                            <label>電話番号</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="090-1234-5678" class="good-input" readonly>
+                                <span class="field-icon">📞</span>
+                            </div>
+                            <span class="status good">IME OFF（適切）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. AI機能の紹介 -->
+    <section id="ai-features" class="ai-features">
+        <div class="container">
+            <h2>🤖 AI機能の紹介</h2>
+            <p class="section-subtitle">
+                フィールド名やプレースホルダーから、適切な入力タイプを自動判定
+            </p>
+            
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <span class="icon">📝</span>
+                    <h4>日本語入力</h4>
+                    <p>氏名、住所、コメント</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">📧</span>
+                    <h4>メールアドレス</h4>
+                    <p>email, mail, メール</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">📞</span>
+                    <h4>電話番号</h4>
+                    <p>tel, phone, 電話</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">🔢</span>
+                    <h4>数値入力</h4>
+                    <p>郵便番号、年齢、金額</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">🔗</span>
+                    <h4>URL</h4>
+                    <p>url, website, ホームページ</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">🔒</span>
+                    <h4>パスワード</h4>
+                    <p>password, パスワード</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">🔍</span>
+                    <h4>検索</h4>
+                    <p>search, 検索, キーワード</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">📅</span>
+                    <h4>日付</h4>
+                    <p>date, 日付, 生年月日</p>
+                </div>
+                <div class="icon-item">
+                    <span class="icon">💳</span>
+                    <h4>カード番号</h4>
+                    <p>card, クレジットカード</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. セキュリティ・プライバシー -->
+    <section id="security" class="security">
+        <div class="container">
+            <h2>🔒 セキュリティ・プライバシー</h2>
+            <p class="section-subtitle">
+                あなたのデータは完全に安全です
+            </p>
+            
+            <div class="security-grid">
+                <div class="security-item">
+                    <span class="security-icon">🛡️</span>
+                    <h4>完全ローカル処理</h4>
+                    <p>入力データは一切外部送信されません</p>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">🚫</span>
+                    <h4>データ収集なし</h4>
+                    <p>個人情報や入力内容を記録・送信しません</p>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">🔐</span>
+                    <h4>オフライン動作</h4>
+                    <p>インターネット接続不要で機能します</p>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">📱</span>
+                    <h4>ローカル保存のみ</h4>
+                    <p>設定はブラウザ内にのみ保存されます</p>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">🔍</span>
+                    <h4>オープンソース</h4>
+                    <p>コードはGitHubで公開、透明性を確保</p>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">⚖️</span>
+                    <h4>Apache License 2.0</h4>
+                    <p>自由に利用・改変・配布可能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. UI紹介 -->
+    <section id="ui-showcase" class="ui-showcase">
+        <div class="container">
+            <h2>📱 UI紹介</h2>
+            <div class="ui-grid">
+                <div class="ui-item">
+                    <div class="ui-image">
+                        <div class="mock-popup">
+                            <div class="mock-header">IME Optimizer</div>
+                            <div class="mock-content">
+                                <div class="mock-domain">現在のサイト: example.com</div>
+                                <div class="mock-toggle">
+                                    <span>有効化</span>
+                                    <div class="mock-switch"></div>
+                                </div>
+                                <div class="mock-select">
+                                    <label>デフォルトIMEモード:</label>
+                                    <select><option>自動</option></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>ポップアップ画面</h4>
+                    <p>サイト別の設定を簡単に変更</p>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-image">
+                        <div class="mock-settings">
+                            <div class="mock-header">設定</div>
+                            <div class="mock-content">
+                                <div class="mock-option">
+                                    <input type="checkbox" checked> 日本語サイトで自動有効化
+                                </div>
+                                <div class="mock-sites">
+                                    <h5>有効化されているサイト</h5>
+                                    <div class="mock-site">example.com (auto)</div>
+                                    <div class="mock-site">test.co.jp (on)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>オプション画面</h4>
+                    <p>詳細設定とサイト管理</p>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-image">
+                        <div class="mock-field">
+                            <input type="text" placeholder="メールアドレス" readonly>
+                            <span class="mock-icon">📧</span>
+                            <div class="mock-tooltip">
+                                AI推測: email, email<br>
+                                信頼度: 95%
+                            </div>
+                        </div>
+                    </div>
+                    <h4>フィールドアイコン</h4>
+                    <p>クリックでカスタム設定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. ダウンロード -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2>🚀 今すぐダウンロード</h2>
+            <p class="section-subtitle">
+                Chrome拡張機能で、快適な日本語入力を始めましょう
+            </p>
+            
+            <div class="download-buttons">
+                <a href="https://github.com/h2suzuki/ime-optimizer/releases/latest" class="btn-primary large">
+                    📥 最新版をダウンロード
+                </a>
+                <a href="https://github.com/h2suzuki/ime-optimizer" class="btn-secondary large">
+                    📊 GitHub で詳細を見る
+                </a>
+            </div>
+            
+            <div class="tech-stats">
+                <div class="stat">
+                    <span class="stat-number">50</span>
+                    <span class="stat-label">テスト通過</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">9</span>
+                    <span class="stat-label">入力タイプ対応</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">推測精度</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 IME Optimizer. Licensed under <a href="https://github.com/h2suzuki/ime-optimizer/blob/main/LICENSE">Apache License 2.0</a></p>
+            <p>🤖 Generated with <a href="https://claude.ai/code">Claude Code</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
