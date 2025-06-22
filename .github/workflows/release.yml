@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Type check
+        run: npm run type-check
+      
+      - name: Build extension
+        run: npm run build
+      
+      - name: Create extension package
+        run: npm run package
+        
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: IME Optimizer v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## 🎉 IME Optimizer v${{ steps.version.outputs.VERSION }}
+            
+            Chrome拡張機能「IME Optimizer」の新しいバージョンをリリースしました。
+            
+            ### 📥 インストール方法
+            1. `ime-optimizer-v${{ steps.version.outputs.VERSION }}.zip` をダウンロード
+            2. ZIPファイルを解凍
+            3. Chromeの拡張機能管理画面を開く
+            4. 「デベロッパーモード」を有効にする
+            5. 「パッケージ化されていない拡張機能を読み込む」で解凍したフォルダを選択
+            
+            ### ✨ 主な機能
+            - 🤖 AI推測による入力フィールド属性の最適化
+            - 🎌 日本語サイトの自動検出
+            - ⚙️ サイト別・フィールド別のカスタム設定
+            - 📱 絵文字アイコンによる視覚的フィードバック
+            
+            ### 🔧 技術仕様
+            - Chrome Extension Manifest V3
+            - TypeScript + Jest (50テスト通過)
+            - ESLint (コード品質保証)
+            
+            ---
+            🤖 Generated with GitHub Actions
+          files: |
+            ime-optimizer-v${{ steps.version.outputs.VERSION }}.zip
+          draft: false
+          prerelease: false
