@@ -173,8 +173,7 @@ function handleFieldIconClick(event) {
     // Create a simple modal-like experience
     const newSetting = prompt(
         `フィールドの設定を変更:\n\n` +
-        `現在の推測: ${getFieldTypeLabel(fieldType)}\n` +
-        `信頼度: ${getConfidenceScore(fieldType)}%\n\n` +
+        `現在の推測: ${getFieldTypeLabel(fieldType)}\n\n` +
         `新しい設定を選択してください:\n` +
         `1: 日本語入力 (📝)\n` +
         `2: メールアドレス (📧)\n` +
@@ -229,25 +228,6 @@ function getFieldTypeLabel(fieldType) {
     return labels[fieldType] || '不明';
 }
 
-function getConfidenceScore(fieldType) {
-    const scores = {
-        'name': 95,
-        'kana': 90,
-        'email': 95,
-        'tel': 90,
-        'postal': 85,
-        'address': 90,
-        'card': 85,
-        'date': 80,
-        'security': 90,
-        'url': 85,
-        'search': 80,
-        'password': 100,
-        'comment': 85
-    };
-    
-    return scores[fieldType] || 75;
-}
 
 function getTypeFromChoice(choice) {
     const choices = {

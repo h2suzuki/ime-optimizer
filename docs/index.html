@@ -16,26 +16,9 @@
             </h1>
             <p class="hero-subtitle">
                 メール欄なのにIME ON、名前欄なのにIME OFF...<br>
-                そんなストレスを解消するChrome拡張機能
+                そんなストレスを解消するChrome拡張機能です。
             </p>
             
-            <div class="problem-demo">
-                <h3>😤 よくある問題</h3>
-                <div class="problem-examples">
-                    <div class="problem-item">
-                        <input type="text" placeholder="メールアドレス" class="bad-example" readonly value="あべ@gmail.com">
-                        <span class="problem-label">メール欄でIME ON</span>
-                    </div>
-                    <div class="problem-item">
-                        <input type="text" placeholder="氏名" class="bad-example" readonly value="tanaka">
-                        <span class="problem-label">名前欄でIME OFF</span>
-                    </div>
-                    <div class="problem-item">
-                        <input type="text" placeholder="電話番号" class="bad-example" readonly value="でんわばんごう">
-                        <span class="problem-label">電話欄で日本語入力</span>
-                    </div>
-                </div>
-            </div>
 
             <div class="hero-cta">
                 <a href="https://github.com/h2suzuki/ime-optimizer/releases/latest" class="btn-primary">
@@ -53,7 +36,6 @@
         <div class="container">
             <h2>✨ 実際に体験してみよう</h2>
             <p class="section-subtitle">
-                下のフォームで拡張機能の効果を実感できます。<br>
                 ※このデモはシミュレーションです。実際の拡張機能では自動的に適用されます。
             </p>
 
@@ -73,14 +55,14 @@
                             <label>氏名</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="田中太郎" data-type="name">
-                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 95%）">📝</span>
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力">📝</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>フリガナ</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="タナカタロウ" data-type="kana">
-                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 90%）">📝</span>
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力">📝</span>
                             </div>
                         </div>
                     </div>
@@ -89,14 +71,14 @@
                             <label>メールアドレス</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="tanaka@example.com" data-type="email">
-                                <span class="field-icon" data-emoji="📧" data-tooltip="メール入力（信頼度: 95%）">📧</span>
+                                <span class="field-icon" data-emoji="📧" data-tooltip="メール入力">📧</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>電話番号</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="090-1234-5678" data-type="tel">
-                                <span class="field-icon" data-emoji="📞" data-tooltip="電話番号（信頼度: 90%）">📞</span>
+                                <span class="field-icon" data-emoji="📞" data-tooltip="電話番号">📞</span>
                             </div>
                         </div>
                     </div>
@@ -105,14 +87,14 @@
                             <label>郵便番号</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="123-4567" data-type="postal">
-                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力（信頼度: 85%）">🔢</span>
+                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力">🔢</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>住所</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="東京都渋谷区..." data-type="address">
-                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 90%）">📝</span>
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力">📝</span>
                             </div>
                         </div>
                     </div>
@@ -125,14 +107,14 @@
                             <label>クレジットカード番号</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="1234 5678 9012 3456" data-type="card">
-                                <span class="field-icon" data-emoji="💳" data-tooltip="カード番号（信頼度: 85%）">💳</span>
+                                <span class="field-icon" data-emoji="💳" data-tooltip="カード番号">💳</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>有効期限</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="12/26" data-type="date">
-                                <span class="field-icon" data-emoji="📅" data-tooltip="日付入力（信頼度: 80%）">📅</span>
+                                <span class="field-icon" data-emoji="📅" data-tooltip="日付入力">📅</span>
                             </div>
                         </div>
                     </div>
@@ -141,7 +123,7 @@
                             <label>セキュリティコード</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="123" data-type="security">
-                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力（信頼度: 90%）">🔢</span>
+                                <span class="field-icon" data-emoji="🔢" data-tooltip="数値入力">🔢</span>
                             </div>
                         </div>
                     </div>
@@ -154,14 +136,14 @@
                             <label>ウェブサイト</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="https://example.com" data-type="url">
-                                <span class="field-icon" data-emoji="🔗" data-tooltip="URL入力（信頼度: 85%）">🔗</span>
+                                <span class="field-icon" data-emoji="🔗" data-tooltip="URL入力">🔗</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>検索</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="キーワードを入力" data-type="search">
-                                <span class="field-icon" data-emoji="🔍" data-tooltip="検索入力（信頼度: 80%）">🔍</span>
+                                <span class="field-icon" data-emoji="🔍" data-tooltip="検索入力">🔍</span>
                             </div>
                         </div>
                     </div>
@@ -170,73 +152,15 @@
                             <label>パスワード</label>
                             <div class="input-with-icon">
                                 <input type="password" placeholder="••••••••" data-type="password">
-                                <span class="field-icon" data-emoji="🔒" data-tooltip="パスワード（信頼度: 100%）">🔒</span>
+                                <span class="field-icon" data-emoji="🔒" data-tooltip="パスワード">🔒</span>
                             </div>
                         </div>
                         <div class="form-field">
                             <label>コメント</label>
                             <div class="input-with-icon">
                                 <input type="text" placeholder="ご要望をお聞かせください" data-type="comment">
-                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力（信頼度: 85%）">📝</span>
+                                <span class="field-icon" data-emoji="📝" data-tooltip="日本語入力">📝</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Before/After比較 -->
-    <section id="comparison" class="comparison">
-        <div class="container">
-            <h2>🔄 Before / After 比較</h2>
-            <div class="comparison-wrapper">
-                <div class="comparison-side">
-                    <h3>❌ 拡張機能なし</h3>
-                    <div class="comparison-form">
-                        <div class="form-field">
-                            <label>メールアドレス</label>
-                            <input type="text" placeholder="あべ@gmail.com" class="bad-input" readonly>
-                            <span class="status bad">IME ON（不適切）</span>
-                        </div>
-                        <div class="form-field">
-                            <label>氏名</label>
-                            <input type="text" placeholder="tanaka" class="bad-input" readonly>
-                            <span class="status bad">IME OFF（不適切）</span>
-                        </div>
-                        <div class="form-field">
-                            <label>電話番号</label>
-                            <input type="text" placeholder="でんわばんごう" class="bad-input" readonly>
-                            <span class="status bad">IME ON（不適切）</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="comparison-side">
-                    <h3>✅ 拡張機能あり</h3>
-                    <div class="comparison-form">
-                        <div class="form-field">
-                            <label>メールアドレス</label>
-                            <div class="input-with-icon">
-                                <input type="text" placeholder="tanaka@example.com" class="good-input" readonly>
-                                <span class="field-icon">📧</span>
-                            </div>
-                            <span class="status good">IME OFF（適切）</span>
-                        </div>
-                        <div class="form-field">
-                            <label>氏名</label>
-                            <div class="input-with-icon">
-                                <input type="text" placeholder="田中太郎" class="good-input" readonly>
-                                <span class="field-icon">📝</span>
-                            </div>
-                            <span class="status good">IME ON（適切）</span>
-                        </div>
-                        <div class="form-field">
-                            <label>電話番号</label>
-                            <div class="input-with-icon">
-                                <input type="text" placeholder="090-1234-5678" class="good-input" readonly>
-                                <span class="field-icon">📞</span>
-                            </div>
-                            <span class="status good">IME OFF（適切）</span>
                         </div>
                     </div>
                 </div>
@@ -247,10 +171,7 @@
     <!-- 4. AI機能の紹介 -->
     <section id="ai-features" class="ai-features">
         <div class="container">
-            <h2>🤖 AI機能の紹介</h2>
-            <p class="section-subtitle">
-                フィールド名やプレースホルダーから、適切な入力タイプを自動判定
-            </p>
+            <h2>🤖 フィールド名やプレースホルダーから、適切な入力タイプを自動判定</h2>
             
             <div class="icon-grid">
                 <div class="icon-item">
@@ -314,32 +235,17 @@
                 <div class="security-item">
                     <span class="security-icon">🛡️</span>
                     <h4>完全ローカル処理</h4>
-                    <p>入力データは一切外部送信されません</p>
+                    <p>入力データは一切外部送信されません。設定はブラウザ内にのみ保存されます。</p>
                 </div>
                 <div class="security-item">
                     <span class="security-icon">🚫</span>
                     <h4>データ収集なし</h4>
-                    <p>個人情報や入力内容を記録・送信しません</p>
-                </div>
-                <div class="security-item">
-                    <span class="security-icon">🔐</span>
-                    <h4>オフライン動作</h4>
-                    <p>インターネット接続不要で機能します</p>
-                </div>
-                <div class="security-item">
-                    <span class="security-icon">📱</span>
-                    <h4>ローカル保存のみ</h4>
-                    <p>設定はブラウザ内にのみ保存されます</p>
+                    <p>個人情報や入力内容を記録・送信しません。</p>
                 </div>
                 <div class="security-item">
                     <span class="security-icon">🔍</span>
                     <h4>オープンソース</h4>
-                    <p>コードはGitHubで公開、透明性を確保</p>
-                </div>
-                <div class="security-item">
-                    <span class="security-icon">⚖️</span>
-                    <h4>Apache License 2.0</h4>
-                    <p>自由に利用・改変・配布可能</p>
+                    <p>コードはGitHubで公開、透明性を確保。</p>
                 </div>
             </div>
         </div>
@@ -395,8 +301,7 @@
                             <input type="text" placeholder="メールアドレス" readonly>
                             <span class="mock-icon">📧</span>
                             <div class="mock-tooltip">
-                                AI推測: email, email<br>
-                                信頼度: 95%
+                                AI推測: email, email
                             </div>
                         </div>
                     </div>
@@ -424,20 +329,6 @@
                 </a>
             </div>
             
-            <div class="tech-stats">
-                <div class="stat">
-                    <span class="stat-number">50</span>
-                    <span class="stat-label">テスト通過</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">9</span>
-                    <span class="stat-label">入力タイプ対応</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">95%</span>
-                    <span class="stat-label">推測精度</span>
-                </div>
-            </div>
         </div>
     </section>
 
