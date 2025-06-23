@@ -184,7 +184,7 @@ class IMEOptimizer {
     // Set tooltip
     const tooltip = isCustom 
       ? `カスタム設定: ${settings.type || 'text'}${settings.inputmode ? `, ${settings.inputmode}` : ''}`
-      : `AI推測: ${settings.type || 'text'}${settings.inputmode ? `, ${settings.inputmode}` : ''} (信頼度: ${Math.round(settings.confidence * 100)}%)`;
+      : `AI推測: ${settings.type || 'text'}${settings.inputmode ? `, ${settings.inputmode}` : ''}`;
     
     indicator.title = tooltip;
 
