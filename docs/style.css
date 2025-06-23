@@ -128,7 +128,7 @@ section {
     padding: 80px 0;
 }
 
-section:nth-child(even) {
+section:nth-child(even):not(.security):not(.download) {
     background: #f8f9fa;
 }
 
@@ -358,12 +358,16 @@ h2 {
 
 /* Security Section */
 .security {
-    background: #2c3e50;
-    color: white;
+    background: #2c3e50 !important;
+    color: white !important;
 }
 
 .security h2 {
-    color: white;
+    color: white !important;
+}
+
+.security .section-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .security-grid {
@@ -382,16 +386,19 @@ h2 {
     font-size: 3rem;
     display: block;
     margin-bottom: 15px;
+    color: white !important;
 }
 
 .security-item h4 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: white !important;
 }
 
 .security-item p {
     opacity: 0.9;
     font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* UI Showcase */
@@ -543,13 +550,17 @@ h2 {
 
 /* Download Section */
 .download {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
     text-align: center;
 }
 
 .download h2 {
-    color: white;
+    color: white !important;
+}
+
+.download .section-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .download-buttons {
